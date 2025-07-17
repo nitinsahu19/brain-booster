@@ -17,7 +17,7 @@ const Header = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700  font-semibold  hover:text-blue-600 "
           }
         >
           Home
@@ -25,7 +25,7 @@ const Header = () => {
         <NavLink
           to="/subjects"
           className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
         >
           Subjects
@@ -33,7 +33,7 @@ const Header = () => {
         <NavLink
           to="/leaderboard"
           className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
         >
           Leaderboard
@@ -41,10 +41,26 @@ const Header = () => {
         <NavLink
           to="/blog"
           className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
         >
           Blog
+        </NavLink>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
+          }
+        >
+          Quizzes
+        </NavLink>
+        <NavLink
+          to="/progress"
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
+          }
+        >
+          My Progress
         </NavLink>
       </div>
 
@@ -53,7 +69,7 @@ const Header = () => {
         <NavLink
           to="/login"
           className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
         >
           Login
@@ -79,7 +95,7 @@ const Header = () => {
           <NavLink
             to="/"
            className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
             onClick={() => setIsOpen(false)}
           >
@@ -88,7 +104,7 @@ const Header = () => {
           <NavLink
             to="/subjects"
            className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
             onClick={() => setIsOpen(false)}
           >
@@ -97,7 +113,7 @@ const Header = () => {
           <NavLink
             to="/leaderboard"
            className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
             onClick={() => setIsOpen(false)}
           >
@@ -106,7 +122,7 @@ const Header = () => {
           <NavLink
             to="/blog"
            className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
             onClick={() => setIsOpen(false)}
           >
@@ -115,7 +131,7 @@ const Header = () => {
           <NavLink
             to="/login"
            className={({ isActive }) =>
-            isActive ? "text-blue-600 font-medium" : "text-gray-700 hover:text-blue-600"
+            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
           }
             onClick={() => setIsOpen(false)}
           >
