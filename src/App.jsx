@@ -1,11 +1,9 @@
-function App() {
+import React from 'react'
+
+const App = () => {
   return (
-    <>
-      <h2 className="h-screen w-full flex justify-center items-center">
-        Hello students
-      </h2>
-    </>
-  );
+    <div>App</div>
+  )
 }
 
-export default App;
+export default App
