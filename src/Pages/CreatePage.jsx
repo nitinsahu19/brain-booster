@@ -1,112 +1,71 @@
 import React, { useState } from "react";
-import { z } from "zod";
-
-// Zod Schema
-const schema = z.object({
-    fullName: z.string().min(1, "Full name is required."),
-    email: z.string().min(1, "Email is required.").email("Enter a valid email address."),
-    password: z.string().min(6, "Password must be at least 6 characters."),
-    confirmPassword: z.string().min(1, "Please confirm your password."),
-}).refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match.",
-    path: ["confirmPassword"],
-});
+import { email, z } from "zod";
+import PrimaryBtn from "../UI/Button/PrimaryBtn";
+import Input from "../UI/InputField/Input";
+import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { data } from "react-router-dom";
 
 export default function CreatePage() {
-    const [form, setForm] = useState({
-        fullName: "",
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
 
-    const [error, setError] = useState({});
 
-    const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
-        setError({ ...error, [e.target.name]: "" }); // Clear error on change
-    };
+    // const schema = z.object({
+    //     fullName: z.string().min(1, "Full name is required."),
+    //     email: z.string().min(1, "Email is required.").email("Enter a valid email address."),
+    //     password: z.string().min(6, "Password must be at least 6 characters."),
+    //     confirmPassword: z.string().min(1, "Please confirm your password."),
+    // }).refine((data) => data.password === data.confirmPassword, {
+    //     message: "Passwords do not match.",
+    //     path: ["confirmPassword"],
+    // });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const schema = z.object({
+        name: z.string().min(2, "Enter your name"),
+        email: z.string().min(2, "Enter your valid email"),
+        password: z.string().min(6, 'Password must be at least 6 characters'),
+        confirmPassword: z.string().min(6, 'please Enter Your confirm password')
+    }).refine((data) => data.password === data.confirmPassword, {
+        message: 'Passwords do not match.',
+        path: ["confirmPassword"]
+    })
 
-        const result = schema.safeParse(form);
+    const { register, reset, handleSubmit, formState: { errors }, trigger } = useForm({ resolver: zodResolver(schema) })
 
-        if (!result.success) {
-            const newErrors = {};
-            result.error.errors.forEach((err) => {
-                newErrors[err.path[0]] = err.message;
-            });
-            setError(newErrors);
-        } else {
-            setError({});
-            alert("Account created successfully!");
-            console.log("✅ Form Data:", form);
-        }
-    };
+    const submit = (data) => {
+        console.log(data);
+        reset()
+
+    }
+
+
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
             <div className="bg-white shadow-md rounded-xl p-8 w-full max-w-md">
                 <h2 className="text-2xl font-semibold text-center mb-6">Create Your Account</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit(submit)} className="space-y-4">
                     <div>
-                        <input
-                            type="text"
-                            name="fullName"
-                            placeholder="Enter your full name"
-                            value={form.fullName}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        {error.fullName && <p className="text-red-500 text-sm mt-1">{error.fullName}</p>}
+                        <Input {...register('name')} type='text' name='name' placeholder='Enter Your Full Name' />
+                        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>}
                     </div>
 
                     <div>
-                        <input
-                            type="email"
-                            name="email"
-                            placeholder="Enter your email"
-                            value={form.email}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        {error.email && <p className="text-red-500 text-sm mt-1">{error.email}</p>}
+                        <Input  {...register('email')} type='email' name='email' placeholder='Enter Your Valid Email' />
+                        {!errors.name && errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
                     </div>
 
                     <div>
-                        <input
-                            type="password"
-                            name="password"
-                            placeholder="Create a password"
-                            value={form.password}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        {error.password && <p className="text-red-500 text-sm mt-1">{error.password}</p>}
+                        <Input {...register('password')} type='password' name='password' placeholder='Create a password' />
+                        {!errors.email && errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
                     </div>
 
                     <div>
-                        <input
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Confirm your password"
-                            value={form.confirmPassword}
-                            onChange={handleChange}
-                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        />
-                        {error.confirmPassword && (
-                            <p className="text-red-500 text-sm mt-1">{error.confirmPassword}</p>
-                        )}
+                        <Input {...register('confirmPassword')} type='password' name='confirmPassword' placeholder='Confirm your password' />
+                        {!errors.password && errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword.message}</p>}
                     </div>
+                    <PrimaryBtn text='Create Account' hasBg />
 
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition duration-200"
-                    >
-                        Create Account
-                    </button>
                 </form>
 
                 <div className="flex items-center my-4">
@@ -115,14 +74,14 @@ export default function CreatePage() {
                     <div className="flex-grow border-t border-gray-300"></div>
                 </div>
 
-                <button className="w-full border flex items-center justify-center py-2 rounded-lg hover:bg-gray-100">
+                <div className="border flex items-center justify-center py-2 rounded-lg hover:bg-gray-100 cursor-pointer w-full max-w-xs mx-auto">
                     <img
                         src="https://www.svgrepo.com/show/475656/google-color.svg"
                         alt="Google logo"
-                        className="w-5 h-5 mr-2"
+                        className="w-5 h-5"
                     />
-                    Sign up with Google
-                </button>
+                    <PrimaryBtn text="Sign up with Google" addClass='ml-3 font-medium text-sm text-gray-700' />
+                </div>
 
                 <p className="text-center text-sm text-gray-500 mt-4">
                     Already have an account?{" "}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PrimaryBtn from "../../UI/Button/PrimaryBtn";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -15,14 +16,14 @@ const Navbar = () => {
                     </div>
                     <div className="hidden md:flex space-x-6 mx-auto">
                         {["Home", "Subjects", "Leaderboard", "Blog"].map((item) => (
-                            <p key={item}  className="text-gray-700 hover:text-blue-600 font-semibold cursor-pointer">
+                            <p key={item} className="text-gray-700 hover:text-blue-600 font-semibold cursor-pointer">
                                 {item}
                             </p>
                         ))}
                     </div>
                     <div className="hidden md:flex items-center space-x-4">
                         <a href="#" className="text-gray-700 hover:text-blue-600">Login</a>
-                        <a href="#" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded-lg text-sm">Sign Up</a>
+                        <PrimaryBtn text='Sign Up' hasBg/>
                     </div>
                     <div className="md:hidden">
                         <button onClick={toggleMenu} className="text-2xl text-gray-800 focus:outline-none">
