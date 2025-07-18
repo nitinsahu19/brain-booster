@@ -4,6 +4,7 @@ import './App.css'
 import LoginForm from './component/LoginForm'
 import SignInForm from './component/SignInForm'
 import Layout from './component/Layout'
+import Quizze from './page/Quizze'
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Route path='/' element={<Layout/>}>
         <Route path='/signup' element={<SignInForm/>}/>
         <Route path='/login' element={<LoginForm/>}/>
+        <Route path='/quizze' element={<Quizze/>}/>
       </Route>
     </Routes>
     </>
