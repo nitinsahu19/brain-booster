@@ -48,9 +48,6 @@ const Quizze = ({ onExpire }) => {
   const {
     seconds,
     minutes,
-    isRunning,
-    pause,
-    resume,
   } = useTimer({
     expiryTimestamp: time,
     onExpire: () => {
