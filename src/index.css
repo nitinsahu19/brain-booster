@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+
+.hello {
+    text-decoration: none;
+    color: black;
+}
+
+.bg1 {
+    background-color: rgb(254, 251, 254) !important;
+
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+    .carddiv {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
