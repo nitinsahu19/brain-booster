@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { FaTrophy } from "react-icons/fa";
-import UserCard from "../components/molecules/UserCard";
-import LeaderboardTable from "../components/organisms/LeaderboardTable";
-import Button from "../components/atoms/Button";
-import leaderboardData from "../data/leaderboardData";
+import UserCard from "../molecules/UserCard";
+import LeaderboardTable from "../organisms/LeaderboardTable";
+import Button from "../atoms/Button";
+import leaderboardData from "../../data/leaderboardData";
 
-export default function LeaderboardPage() {
+const LeaderboardPage = () => {
   const [activeTab, setActiveTab] = useState("Weekly");
 
   const top3 = leaderboardData.slice(0, 3);
@@ -13,7 +13,6 @@ export default function LeaderboardPage() {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-
       <div className="max-w-6xl mx-auto px-4 py-10">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
           <div className="flex items-center gap-3">
@@ -40,4 +39,6 @@ export default function LeaderboardPage() {
       </div>
     </div>
   );
-}
+};
+
+export default LeaderboardPage;
