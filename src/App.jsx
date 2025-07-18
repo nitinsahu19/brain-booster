@@ -1,11 +1,7 @@
+import AuthForm from "./components/AuthForm";
+
 function App() {
-  return (
-    <>
-      <h2 className="h-screen w-full flex justify-center items-center">
-        Hello students
-      </h2>
-    </>
-  );
+  return <AuthForm />;
 }
 
 export default App;
