@@ -1,11 +1,13 @@
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LeaderboardPage from "./pages/LeaderboardPage";
+
+export default function App() {
   return (
-    <>
-      <h2 className="h-screen w-full flex justify-center items-center">
-        Hello students
-      </h2>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LeaderboardPage />} />
+      </Routes>
+    </Router>
   );
 }
-
-export default App;
