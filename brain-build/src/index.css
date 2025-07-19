@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+/*
+custom css for navigation component
+*/
+@media (max-width:840px) {
+    .media-query{
+        font-size: 15px;
+        margin-left: 4px;
+    }
+    .gaping{
+        gap: 10px;
+    }
+}

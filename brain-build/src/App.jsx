@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router'
 import './App.css'
 import LoginForm from './component/LoginForm'
 import SignInForm from './component/SignInForm'
-import Layout from './component/Layout'
-import Quizze from './page/Quizze'
+import Layout from './component/template/Layout'
+import Quizze from './component/pages/Quizze'
 
 function App() {
 

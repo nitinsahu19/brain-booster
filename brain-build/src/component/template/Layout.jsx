@@ -1,17 +1,19 @@
 import React from 'react'
-import Header from './Header'
+import Navbar from '../organisms/Navbar'
 import { Outlet } from 'react-router'
 
 const Layout = () => {
   return (
     <div>
       <header>
-        <Header/>
+        <Navbar/>
       </header>
       <main>
         <Outlet/>
       </main>
-      
+      <footer>
+
+      </footer>
     </div>
   )
 }

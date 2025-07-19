@@ -1,8 +1,10 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect, useState } from "react";
-import { nextQuestion, preQuestion, resetquize, checkAnswer } from "../slice/quizeSlice";
+import { nextQuestion, preQuestion, resetquize, checkAnswer } from "../../slice/quizeSlice";
 import { useTimer } from "react-timer-hook";
+import { MdOutlineWatchLater } from "react-icons/md";
+import { useState } from "react";
+
 
 
 
@@ -17,7 +19,6 @@ const Quizze = ({ onExpire }) => {
     dispatch(checkAnswer(option))
   }
 
-  // const [timeLeft, setTimeLeft] = useState(5 * 60); // 15 minutes in seconds
 
 
   // useEffect(() => {
@@ -40,22 +41,30 @@ const Quizze = ({ onExpire }) => {
   //   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   // };
 
+  const [quizStarted, setQuizStarted] = useState(false);
 
- const time = new Date();
+
+  const time = new Date();
   time.setMinutes(time.getMinutes() + 1); // 5 minutes
 
-  
+
   const {
     seconds,
     minutes,
+    start,
+    restart
   } = useTimer({
     expiryTimestamp: time,
+    autoStart: false,
     onExpire: () => {
-      dispatch(resetquize()) 
+      dispatch(resetquize())
+      setQuizStarted(false)
     },
   });
-
   
+
+
+
 
   return (
     <div>
@@ -63,16 +72,19 @@ const Quizze = ({ onExpire }) => {
       <div>
 
 
-        {!isFinished ? <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow mt-3">
+        {!isFinished ? <div className="max-w-3xl mx-auto p-6 bg-white rounded-lg shadow-2xl mt-3">
           <div className="flex justify-between items-center mb-4">
             <div>
               <h1 className="text-2xl font-bold">Science</h1>
               <p className="text-sm text-gray-500">Calculus Basics Quiz</p>
             </div>
             <div className="flex items-center gap-4">
-             <div style={{ fontSize: "30px" }}>
-      <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
-    </div>
+              <div className="text-lg flex items-center gap-1">
+                <span><MdOutlineWatchLater /></span>
+                <div>
+                <span>{minutes}</span>:<span>{seconds < 10 ? `0${seconds}` : seconds}</span>
+                </div>
+              </div>
               <span className="flex items-center gap-1 text-yellow-500">
                 💰 100
               </span>
@@ -80,9 +92,9 @@ const Quizze = ({ onExpire }) => {
           </div>
 
 
-          <div className="mb-6">
-            <p className="font-medium mb-2">Question {currentIndex + 1} of {question.length}</p>
-            <div className="w-full bg-gray-200 h-2 rounded-full">
+          <div className="mb-6 flex  justify-between w-full items-center">
+            <p className="font-medium mb-2 ">Question {currentIndex + 1} of {question.length}</p>
+            <div className="w-50 bg-gray-200 h-2 rounded-full">
               <div className="bg-blue-600 h-2 rounded-full " style={{ width: `${((currentIndex + 1) / question.length) * 100}%` }}
               ></div>
             </div>
@@ -92,14 +104,14 @@ const Quizze = ({ onExpire }) => {
           <h3 className="text-xl mb-2 font-medium">
             Q{currentIndex + 1}: {currentQuestion.question}
           </h3>
-          <div className="space-y-2">
+          <div className="space-y-3">
             {currentQuestion.options.map((option) => (
               <button
                 key={option}
                 onClick={() => handleoptionClick(option)}
-                className={`block w-full px-4 py-2 border font-medium  rounded-3xl ${selectedOptions[currentIndex] === option
-                  ? "border-green-600 border-2"
-                  : "rounded-3xl border"
+                className={`flex  w-full px-4 py-3 border font-semibold   ${selectedOptions[currentIndex] === option
+                  ? "border-green-600 border-2 rounded"
+                  : "rounded border-gray-300"
                   }`}
               >
                 {option}
@@ -125,7 +137,6 @@ const Quizze = ({ onExpire }) => {
             </button>
           </div>
 
-          <p className="mt-4 text-center font-medium text-lg">Score: {score}</p>
         </div> : <div className="p-4 max-w-md mx-auto text-center font-medium">
           <h2 className="text-2xl font-bold mb-4">🎉 Quiz Completed! 🎉</h2>
           <p className="text-lg mb-2">Your Score: {score} / {question.length}</p>

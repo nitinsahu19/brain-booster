@@ -82,23 +82,7 @@ const Header = () => {
        
       </div>
 
-      {/* Desktop Auth */}
-      {/* <div className="hidden md:flex items-center gap-4">
-        <NavLink
-          to="/login"
-          className={({ isActive }) =>
-            isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold  hover:text-blue-600"
-          }
-        >
-          Login
-        </NavLink>
-        <NavLink
-          to="/signup"
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Sign Up
-        </NavLink>
-      </div> */}
+     
 
       {/* Mobile Hamburger */}
       <div className="md:hidden flex items-center">
