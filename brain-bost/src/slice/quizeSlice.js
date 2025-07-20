@@ -51,10 +51,13 @@ const quizeSlice = createSlice({
             state.score = 0;
             state.selectedOptions = {};
              state.isFinished = false;
+        },
+        resetIsFinished : (state)=>{
+            state.isFinished = true
         }
     }
 })
 
-export const { nextQuestion, preQuestion, checkAnswer, resetquize } = quizeSlice.actions;
+export const { nextQuestion, preQuestion, checkAnswer, resetquize,resetIsFinished } = quizeSlice.actions;
 
 export default quizeSlice.reducer;
