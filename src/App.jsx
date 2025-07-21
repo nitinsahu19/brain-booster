@@ -1,13 +1,13 @@
 import './App.css' 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from './Layout'
-import Home from './Components/Home/Home'
-import Subject from './Components/Subjects/Page'
-import Leaderboard from './Components/Leaderboard/Leaderboard'
-import Blog from './Components/Blog/Blog'
-import MyProgress from './Components/MyProgress/Page'
-import Quizees from './Components/Quizees/Page'
+import Subject from './Pages/Subjects/Page'
+import Leaderboard from './Pages/Leaderboard/Leaderboard'
+import Blog from './Pages/Blog/Blog'
+import MyProgress from './Pages/MyProgress/Page'
+import Quizees from './Pages/Quizees/Page'
 import SignUpLogin from './Pages/CreatePage'
+import Home from './Pages/Home/Home'
 
 function App() {
   const router = createBrowserRouter([{

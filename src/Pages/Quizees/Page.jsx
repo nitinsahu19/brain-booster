@@ -2,6 +2,8 @@ import { FaCoins } from "react-icons/fa";
 import { LuClock3 } from "react-icons/lu";
 import { useTimer } from "react-timer-hook";
 import AnswerFiled from "../../UI/InputField/AnswerFiled";
+import { useState } from "react";
+import { questions } from "../../questions/questionsMath";
 
 
 
@@ -12,7 +14,7 @@ const TimerFun = ({ expiryTimestamp }) => {
     })
     return (
         <div>
-            {String(minutes).padStart(2, 0)} :{String(seconds).padStart(2, 0)}
+            {String(minutes).padStart(2, 0)}:{String(seconds).padStart(2, 0)}
         </div>
     )
 
@@ -20,6 +22,13 @@ const TimerFun = ({ expiryTimestamp }) => {
 const Quizees = () => {
     const time = new Date();
     time.setSeconds(time.getSeconds() + 15 * 60)
+
+    const [selected, setSelected] = useState(null)
+
+    const [question , setQuestion] = useState(questions)
+
+    
+
 
 
     return (
@@ -58,42 +67,19 @@ const Quizees = () => {
 
 
                     <div className="space-y-3">
-                        <div
-
-                            className="border rounded-lg px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-                        >
-                            <p>Answers 1</p>
-                        </div>
-                        <div
-                            className="border rounded-lg px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-                        >
-                            <p>Answers 2</p>
-                        </div>
-                        <div
-                            className="border rounded-lg px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-                        >
-                            <p>Answers 3</p>
-                        </div>
-                        <div
-                            className="border rounded-lg px-4 py-3 hover:bg-gray-50 cursor-pointer transition"
-                        >
-                            <p>Answers 4</p>
-                        </div>
+                        <AnswerFiled answers='Answer 1' name='answer1' value={1} selected={selected} onSelect={setSelected} />
+                        <AnswerFiled answers='Answer 2' name='answer1' value={2} selected={selected} onSelect={setSelected} />
+                        <AnswerFiled answers='Answer 3' name='answer1' value={3} selected={selected} onSelect={setSelected} />
+                        <AnswerFiled answers='Answer 4' name='answer1' value={4} selected={selected} onSelect={setSelected} />
                     </div>
 
                     <div className="flex justify-between">
-                        <button className="px-5 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
-                            Previous
-                        </button>
-                        <button className="px-5 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition">
-                            Next
-                        </button>
+                        <button className="cursor-pointer px-5 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition">Previous</button>
+                        <button className="cursor-pointer px-5 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition">Next</button>
                     </div>
                 </div>
             </div>
-
         </>
     )
 }
-
 export default Quizees

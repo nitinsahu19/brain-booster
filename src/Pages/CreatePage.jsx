@@ -68,9 +68,9 @@ export default function SignUpLogin() {
 
                     <div className="border flex items-center justify-center py-2 rounded-lg hover:bg-gray-100 cursor-pointer w-full max-w-xs mx-auto">
                         <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google logo" className="w-7 h-5" />
-                  
-                            <PrimaryBtn text="Sign up with Google" addClass='me-auto font-medium text-sm text-gray-700' />
-                        
+
+                        <PrimaryBtn text="Sign up with Google" addClass='me-auto font-medium text-sm text-gray-700' />
+
                     </div>
 
                     <p className="text-center text-sm text-gray-500 mt-4">
