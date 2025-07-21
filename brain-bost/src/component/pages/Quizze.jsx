@@ -19,34 +19,10 @@ const Quizze = () => {
     dispatch(checkAnswer(option))
   }
 
-
-
-  // useEffect(() => {
-  //   if (timeLeft <= 0) {
-  //     // Time khatam hone par quiz khatam karo
-  //     dispatch(resetquize());  // Ya koi "finishQuiz" action banao
-  //     return;
-  //   }
-
-  //   const timer = setInterval(() => {
-  //     setTimeLeft((prev) => prev - 1);
-  //   }, 1000);
-
-  //   return () => clearInterval(timer);
-  // }, [timeLeft, dispatch]);
-
-  // const formatTime = (seconds) => {
-  //   const mins = Math.floor(seconds / 60);
-  //   const secs = seconds % 60;
-  //   return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  // };
-
-
   const [quizestart, setQuizestart] = useState(false)
 
   const time = new Date();
-  time.setMinutes(time.getMinutes() + 1); // 5 minutes
-
+  time.setMinutes(time.getMinutes() + 2); // 5 minutes
 
   const {
     seconds,

@@ -1,8 +1,5 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice} from "@reduxjs/toolkit";
 import { scienceQuestions } from "../data/Question";
-import { act } from "react";
-
-
 
 const quizeSlice = createSlice({
     name: "quize",
@@ -11,13 +8,13 @@ const quizeSlice = createSlice({
         currentIndex: 0,
         score: 0,
         selectedOptions: {},
-         isFinished: false 
+        isFinished: false
     },
     reducers: {
         nextQuestion: (state) => {
             if (state.currentIndex < state.question.length - 1) {
                 state.currentIndex += 1
-            }else{
+            } else {
                 state.isFinished = true;
             }
 
@@ -31,33 +28,27 @@ const quizeSlice = createSlice({
             const selected = action.payload;
             const cuurentQ = state.question[state.currentIndex]
             const correct = cuurentQ.correctAnswer
-
-
             const prevSelected = state.selectedOptions[state.currentIndex];
-
-
             if (prevSelected === correct) {
                 state.score -= 1;
             }
             state.selectedOptions[state.currentIndex] = selected;
-
             if (selected === correct) {
-                state.score +=1;
-
+                state.score += 1;
             }
         },
         resetquize: (state) => {
             state.currentIndex = 0;
             state.score = 0;
             state.selectedOptions = {};
-             state.isFinished = false;
+            state.isFinished = false;
         },
-        resetIsFinished : (state)=>{
+        resetIsFinished: (state) => {
             state.isFinished = true
         }
     }
 })
 
-export const { nextQuestion, preQuestion, checkAnswer, resetquize,resetIsFinished } = quizeSlice.actions;
+export const { nextQuestion, preQuestion, checkAnswer, resetquize, resetIsFinished } = quizeSlice.actions;
 
 export default quizeSlice.reducer;
