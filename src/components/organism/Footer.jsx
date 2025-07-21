@@ -12,8 +12,8 @@ const Footer = () => {
                     <p className="mt-3 text-sm leading-relaxed">Empowering learners worldwide with interactive quizzes and comprehensive learning resources.</p>
                 </div>
 
-                <div>
-                    <h3 className="text-white font-semibold mb-3">Quick Links</h3>
+                <div className="responce">
+                    <h3 className="text-white font-semibold mb-3  ">Quick Links</h3>
                     <ul className="space-y-2 text-sm">
                         <li><a className="text-white no-underline" href="#">Home</a></li>
                         <li><a className="text-white no-underline" href="#">Subjects</a></li>
@@ -22,7 +22,7 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div>
+                <div className="responce">
                     <h3 className="text-white font-semibold mb-3">Support</h3>
                     <ul className="space-y-2 text-sm">
                         <li><a className="text-white no-underline" href="#">Help Center</a></li>
@@ -32,10 +32,10 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                <div>
+                <div className="responce">
                     <h3 className="text-white font-semibold mb-3">Connect</h3>
                     <ul className="space-y-2 text-sm">
-                        <ul className="space-y-2">
+                        <ul className="space-y-2 ">
                             <li className="decoration-0"><a className="text-white no-underline" href="#">Facebook</a></li>
                             <li><a className="text-white no-underline" href="#">Twitter</a></li>
                             <li><a className="text-white no-underline" href="#">LinkedIn</a></li>

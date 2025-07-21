@@ -8,7 +8,6 @@ import PopularSubjects from "../molecules/dashBoard/PopularSubjects";
 import LatestfromBlog from "../molecules/dashBoard/LatestfromBlog";
 import MiniFooter from "../organism/Minifooter";
 import Footer from "../organism/Footer";
-import Navbar from "../organism/Navbar";
 
 function Home() {
     return (
@@ -41,7 +40,7 @@ function Home() {
                             ))}
                         </ul>
                     </div>
-                    <div className="w-100 mx-auto bg-white rounded-xl shadow-xs border p-4 space-y-4">
+                    <div className="w-100 mx-auto bg-white rounded-xl shadow-xs border p-4 s">
                         <h2 className="text-lg font-bold">Latest Blog Posts</h2>
 
                         <img

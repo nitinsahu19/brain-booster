@@ -15,7 +15,7 @@ function PopularSubjects({ item, index }) {
                         style={{ width: `${item.progress}%` }}
                     ></div>
                 </div>
-                <button className="mt-2 border border-blue-500 text-blue-500 px-4 py-1 rounded-lg hover:bg-blue-50 text-sm">
+                <button className="mt-2 border border-blue-500 text-blue-500 px-4 py-1 rounded-3 hover:bg-blue-50 text-sm">
                     Start Quiz
                 </button>
             </div>

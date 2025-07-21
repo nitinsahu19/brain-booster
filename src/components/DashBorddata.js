@@ -8,7 +8,7 @@ export const DeshbordCard = [
 ];
 
 export const subjects = [
-    { title: "Mathematics", percentage: 97, icon: "/FRAME (6).png" },
+    { title: "Mathematics", percentage: 100, icon: "/FRAME (6).png" },
     { title: "Science", percentage: 70, icon: "/FRAME (7).png" },
     { title: "History", percentage: 10, icon: "/FRAME (8).png" },
     { title: "English", percentage: 75, icon: "/FRAME (9).png" }
@@ -36,7 +36,7 @@ export const SubjectsData = [
     { id: 1, name: "Physics", quizzes: 45, progress: 65, icon: "/SVG1.png", },
     { id: 2, name: "Literature", quizzes: 38, progress: 50, icon: "/SVG2.png", },
     { id: 3, name: "Programming", quizzes: 52, progress: 75, icon: "/SVG3.png", },
-    { id: 4, name: "Mathematics", quizzes: 41, progress: 40, icon: "/SVG4.png", },
+    { id: 4, name: "Mathematics", quizzes: 41, progress: 86, icon: "/SVG4.png", },
 ];
 
 export const BlogData = [
