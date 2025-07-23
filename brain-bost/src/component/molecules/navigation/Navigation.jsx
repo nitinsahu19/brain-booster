@@ -131,14 +131,14 @@ const Navigation = () => {
             >
               Blog
             </NavLink>
-            <div className=" font-semibold">
-              <div className="flex gap-2 items-center">
-                <p className="text-amber-400 pt-1"><FaCoins /></p>
+            <div className=" font-semibold flex gap-3 items-center">
+              <div className="flex gap-2 items-center pt-2">
+                <p className="text-amber-400 pt-1  text-lg"><FaCoins /></p>
                 <p>100</p>
               </div>
               <div >
-                <div className="flex gap-1 items-center mt-2">
-                  <img className="h-9 w-9 rounded-full ps-0" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740" alt="" />
+                <div className="flex gap-1 items-center mt-2 ps-0">
+                  <img className="h-9 w-9 rounded-full cursor-pointer" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg?semt=ais_hybrid&w=740" alt="" />
                   <p>Ram</p>
                 </div>
               </div>

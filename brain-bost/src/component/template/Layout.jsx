@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from '../organisms/Navbar'
 import { Outlet } from 'react-router'
+import Foter from '../pages/Foter'
 
 const Layout = () => {
   return (
@@ -12,7 +13,7 @@ const Layout = () => {
         <Outlet/>
       </main>
       <footer>
-
+      <Foter/>
       </footer>
     </div>
   )

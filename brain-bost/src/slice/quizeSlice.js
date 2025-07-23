@@ -17,7 +17,6 @@ const quizeSlice = createSlice({
             } else {
                 state.isFinished = true;
             }
-
         },
         preQuestion: (state) => {
             if (state.currentIndex > 0) {
