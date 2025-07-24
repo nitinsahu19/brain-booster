@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { login } from "../../redux/reducers/userSlice";
 
 const Login = () => {
@@ -25,7 +25,18 @@ const Login = () => {
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-6 rounded shadow w-full max-w-sm">
+
                 <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
+                <div>
+                    <p className="flex justify-content-between text-sm mt-4">
+                        <NavLink to="/login" className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold border-b-2  hover1 " : "text-gray-700 font-semibold hover"
+                        }>Login</NavLink>
+                        <NavLink className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold border-b-2  hover1 " : "text-gray-700 font-semibold hover"
+                        } to="/register" >Register</NavLink>
+                    </p>
+                </div>
 
                 <form onSubmit={loginHandler} className="space-y-4">
                     <div>

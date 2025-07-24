@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { signup } from "../../redux/reducers/userSlice";
+import { NavLink } from "react-router";
 
 
 const Register = () => {
@@ -21,23 +22,33 @@ const Register = () => {
         if (password1 !== password2) {
             alert("Passwords do not match!");
             return;
-        }
+        } else {
+            const isExistingUser = user.allUsers.find((u) => u.email === email);
+            if (isExistingUser) {
+                alert("User with this email already exists!");
+                return;
+            }
 
-        const isExistingUser = user.allUsers.find((u) => u.email === email);
-        if (isExistingUser) {
-            alert("User with this email already exists!");
-            return;
+            const newuser = { name, email, password: password1 };
+            dispatch(signup(newuser));
+            navigate('/')
         }
-
-        const newuser = { name, email, password: password1 };
-        dispatch(signup(newuser));
-        navigate('/')
     }
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-6 rounded-md shadow-md w-full max-w-sm">
                 <h2 className="text-2xl font-semibold text-center mb-6">Register</h2>
+                <div>
+                    <p className="flex justify-content-between text-sm mt-4">
+                        <NavLink to="/login" className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold border-b-2  hover1 " : "text-gray-700 font-semibold hover"
+                        }>Login</NavLink>
+                        <NavLink className={({ isActive }) =>
+                            isActive ? "text-blue-500 font-bold border-b-2  hover1 " : "text-gray-700 font-semibold hover"
+                        } to="/register" >Register</NavLink>
+                    </p>
+                </div>
 
                 <form onSubmit={signupHandler} className="space-y-4">
                     <div>
@@ -80,8 +91,7 @@ const Register = () => {
                             placeholder="Confirm your password"
                         />
                     </div>
-                    <Link to="/login" className="text-blue-600 text-sm hover:underline"><button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Create Account</button>
-                    </Link>
+                    <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded">Create Account</button>
                 </form>
 
                 <p className="text-center text-sm mt-4">
