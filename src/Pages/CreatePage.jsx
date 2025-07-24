@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { email, z } from "zod";
-import PrimaryBtn from "../UI/Button/PrimaryBtn";
-import Input from "../UI/InputField/Input";
+import PrimaryBtn from "../Components/atoms/Button/PrimaryBtn";
+import Input from "../Components/atoms/InputField/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { data, NavLink } from "react-router-dom";

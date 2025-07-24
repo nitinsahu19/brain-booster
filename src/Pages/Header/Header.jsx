@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PrimaryBtn from "../../UI/Button/PrimaryBtn";
+import PrimaryBtn from "../../Components/atoms/Button/PrimaryBtn";
 import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
