@@ -1,38 +1,32 @@
+import React, { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import React , {lazy} from 'react';
-
-import {Routes, Route } from 'react-router-dom';
-const Login = lazy(() => import('./Components/Login'))
-const NotFound  = lazy(() => import('./Components/NotFound'))
-const Blog  = lazy(() => import('./Components/Blog'))
-const SignUp  = lazy(() => import('./Components/SignUp'))
-const Navbar  = lazy(() => import('./Components/Navbar'))
+// Lazy loaded components
 
 
+const Navbar = lazy(() => import("./Components/Navbar"));
+const NotFound = lazy(() => import("./Components/NotFound"));
 
-
+// Atomic-designed progress dashboard
+import MyProgress from "./data/MyProgress"; // Make sure the path is correct
+import Login from "./Components/Login";
 
 function App() {
   return (
     <div>
-      
-
-     
-        <React.Suspense fallback={<div>Loading...</div>}>
-          <Routes>
+      <Suspense fallback={<div className="text-center p-4">Loading...</div>}>
+        <Routes>
+          {/* Wrap these routes with Navbar layout */}
+          <Route path="/" element={<Navbar />}>
+            <Route index element={<Login />} />
            
-            <Route path="/" element={<Navbar/>}>
-             
-              <Route path="SignUp" element={<SignUp />} />
-              <Route path="/Login" element={<Login />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="*" element={<NotFound/>} />
-          
-            </Route>
-          </Routes>
-        </React.Suspense>
-     
-    
+            
+            <Route path="progress" element={<MyProgress />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </div>
   );
 }
