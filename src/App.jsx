@@ -20,7 +20,6 @@ const Home = lazy(() => import("./components/tamplate/Home"));
 function App() {
   return (
     <>
-      <Navbar />
       <Suspense
         fallback={
           <div className="flex justify-center items-center h-screen fw-bold">
