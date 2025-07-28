@@ -1,55 +1,83 @@
-import './App.css' 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Layout from './Layout'
-import Subject from './Pages/Subjects/Page'
-import Leaderboard from './Pages/Leaderboard/Leaderboard'
-import Blog from './Pages/Blog/Blog'
-import MyProgress from './Pages/MyProgress/Page'
-import Quizees from './Pages/Quizees/Page'
-import SignUpLogin from './Pages/CreatePage'
-import Home from './Pages/Home/Home'
+import { Suspense, lazy } from "react";
+import { Route, Routes } from "react-router-dom";
+// import Navbar from "./components/organism/Navbar";
+// import Signup from "./components/Signup";
+// import LoginForm from "./components/LoginForm";
+import Subjects from "./components/Subjects";
+import Blog from "./components/Blog";
+import Quizzes from "./components/Quizzes";
+import LeaderboardPage from "./components/tamplate/LeaderboardPage";
+import Register from "./components/tamplate/Register";
+import ProtectedRoute from "./protectect/ProtectedRoute ";
+import { BeatLoader } from "react-spinners";
+import Login from "./components/tamplate/Login";
+import MyProgress from "./data/MyProgress";
+
+const Navbar = lazy(() => import("./Components/Navbar"));
+const NotFound = lazy(() => import("./Components/NotFound"));
+const Home = lazy(() => import("./components/tamplate/Home"));
 
 function App() {
-  const router = createBrowserRouter([{
-    path: '/',
-    element: <Layout />,
-    children: [
-      {
-        path: '/',
-        element: <Home />
-      },
-      {
-        path: 'all-subject',
-        element: <Subject />
-      },
-      {
-        path: 'quize',
-        element: <Quizees />
-      },
-      {
-        path: 'leaderboard',
-        element: <Leaderboard />
-      },
-      {
-        path: 'blog',
-        element: <Blog />
-      },
-      {
-        path: 'myprogress',
-        element: <MyProgress />
-      },
-      {
-        path:'login',
-        element:<SignUpLogin />
-      }
-    ]
-  }])
-
   return (
     <>
-      <RouterProvider router={router} />
+      <Suspense
+        fallback={
+          <div className="flex justify-center items-center h-screen fw-bold">
+            <h1>
+              <BeatLoader />
+            </h1>
+          </div>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Navbar />}>
+            <Route path="progress" element={<MyProgress />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          {/* Open Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/quizees" element={<Quizzes/>}/>
+
+          {/* Protected Routes */}
+          <Route
+            path="/subjects"
+            element={
+              <ProtectedRoute>
+                <Subjects />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+              <ProtectedRoute>
+                <Blog />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/quizze"
+            element={
+              <ProtectedRoute>
+                <Quizzes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/leaderboard"
+            element={
+              <ProtectedRoute>
+                <LeaderboardPage />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Suspense>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
