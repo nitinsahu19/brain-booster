@@ -22,8 +22,7 @@ const Quizze = () => {
   const [quizestart, setQuizestart] = useState(false)
 
   const time = new Date();
-  time.setMinutes(time.getMinutes() + 2); // 5 minutes
-
+  time.setMinutes(time.getMinutes() + 5); // 5 minutes
   const {
     seconds,
     minutes,
@@ -35,20 +34,19 @@ const Quizze = () => {
     onExpire: () => {
       // dispatch(resetquize())
       dispatch(resetIsFinished())
-
     },
   });
 
 
 const startTime = ()=>{
     const time = new Date();
-    time.setMinutes(time.getMinutes() + 1);
+    time.setMinutes(time.getMinutes() + 5);
     restart(time);
     setQuizestart(true);
 }
 const resetTime = ()=>{
     const time = new Date();
-    time.setMinutes(time.getMinutes() + 1);
+    time.setMinutes(time.getMinutes() + 5);
     restart(time);
     setQuizestart(false);
 }
