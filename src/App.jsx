@@ -23,7 +23,7 @@ function App() {
         element: <Subject />
       },
       {
-        path: 'quizees',
+        path: 'quize',
         element: <Quizees />
       },
       {

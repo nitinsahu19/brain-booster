@@ -18,7 +18,7 @@ const Navbar = () => {
                     <div className="hidden md:flex space-x-6 mx-auto">
                         {[
                             { name: "Subjects", path: "/all-subject" },
-                            { name: "Quizzes", path: "/quizees" },
+                            { name: "Quizzes", path: "/quize" },
                             { name: "Leaderboard", path: "/leaderboard" },
                             { name: "Blog", path: "/blog" },
                             { name: 'My Progress', path: "/myprogress" }

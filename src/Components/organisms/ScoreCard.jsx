@@ -17,11 +17,14 @@ const ScoreCard = ({ questions, selectedAnswers }) => {
         questions.forEach((q) => {
             if (selectedAnswers[q.id] === q.answer) {
                 score++;
+                console.log(score)
+                console.log(q)
+                console.log(selectedAnswers[q.id])
             }
+
         });
         return score;
     };
-
     const score = calculateScore(questions, selectedAnswers)
 
     return (
