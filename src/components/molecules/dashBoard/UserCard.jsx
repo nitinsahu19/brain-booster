@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../atoms/Avatar";
+import Avatar from "../../atoms/Avatar";
 
 export default function UserCard({ rank, name, points, subjects, avatar }) {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import UserRow from "../molecules/UserRow";
+import UserRow from "../molecules/dashBoard/UserRow";
 
 export default function LeaderboardTable({ users }) {
   return (

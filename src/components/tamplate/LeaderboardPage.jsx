@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { FaTrophy } from "react-icons/fa";
-import UserCard from "../molecules/UserCard";
-import LeaderboardTable from "../organisms/LeaderboardTable";
-import Button from "../atoms/Button";
 import leaderboardData from "../../data/leaderboardData";
+import  Button  from "../atoms/Button";
+import LeaderboardTable from "../organism/LeaderboardTable";
+import UserCard from "../molecules/dashBoard/UserCard";
 
 const LeaderboardPage = () => {
   const [activeTab, setActiveTab] = useState("Weekly");
