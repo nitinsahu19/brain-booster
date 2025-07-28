@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+
+.hello {
+    text-decoration: none;
+    color: black;
+}
+
+.bg1 {
+    background-color: rgb(254, 251, 254) !important;
+
+}
+
+.hover{
+    text-decoration: none !important;
+    color: gray;
+}
+.hover:hover {
+    color: #2b7fff !important;
+}
+.hover1{
+    text-decoration: none !important;
+
+}
+.textnone{
+    text-decoration: none !important;
+    color: gray;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .carddiv {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .responce{
+        margin-top: -50px;
+        text-align: start !important;
+    }
+}
