@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/organism/Navbar";
@@ -11,6 +12,17 @@ import Register from "./components/tamplate/Register";
 import ProtectedRoute from "./protectect/ProtectedRoute "; 
 import { BeatLoader } from "react-spinners";
 import Login from "./components/tamplate/Login";
+import React, { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+
+
+
+
+const Navbar = lazy(() => import("./Components/Navbar"));
+const NotFound = lazy(() => import("./Components/NotFound"));
+
+
+import MyProgress from "./data/MyProgress"; 
 
 const Home = lazy(() => import("./components/tamplate/Home"));
 
@@ -20,6 +32,11 @@ function App() {
       <Navbar />
       <Suspense fallback={<div className="flex justify-center items-center h-screen fw-bold"><h1><BeatLoader /></h1></div>}>
         <Routes>
+    
+     <Route path="/" element={<Navbar />}>
+            <Route path="progress" element={<MyProgress />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
           {/* Open Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -50,6 +67,7 @@ function App() {
         </Routes>
       </Suspense>
     </>
+
   );
 }
 
