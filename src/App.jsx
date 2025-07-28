@@ -1,9 +1,12 @@
-function App() {
+import React from 'react'
+import LeaderboardPage from './components/templates/LeaderboardPage'
+
+const App = () => {
   return (
     <>
-      <h2 className="h-screen w-full flex justify-center items-center">
-        Hello students
-      </h2>
+      <LeaderboardPage/>
     </>
-  );
+  )
 }
+
+export default App
