@@ -1,12 +1,17 @@
+import React from 'react'
 
-export default function Button({ label, active }) {
+const Button = ({ label, active }) => {
   return (
-    <button
-      className={`px-4 py-1 text-sm rounded-full border cursor-pointer hover:bg-blue-600  ${
-        active ? " text-black border-gray-300" : "bg-white text-black border-gray-300"
-      }`}
-    >
-      {label}
-    </button>
-  );
+    <>
+      <button
+        className={`w-25 h-9 bg-blue-100 text-blue-800 text-sm rounded-full border cursor-pointer ${active ? " text-black border-gray-300" : " border-gray-300"
+          }`}> {label}
+      </button>
+    </>
+  )
 }
+
+export default Button
+
+
+

@@ -1,2 +1,16 @@
 @import "tailwindcss";
  
+body{
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: "Gill Sans Extrabold", sans-serif;
+}
+
+.phtos{
+    width: 800px;
+    height: 560px;
+    object-fit: contain;
+}
+
+
+

@@ -1,12 +1,22 @@
-import React from 'react'
-import LeaderboardPage from './components/templates/LeaderboardPage'
+import React, { Suspense, lazy } from 'react'; 
+import { Routes, Route } from 'react-router-dom'; 
 
-const App = () => {
+const BlogSection = lazy(() => import('./components/templates/BlogSection')); 
+const CardMaster = lazy(() => import('./components/templates/CardMaster'))
+
+
+function App() {
   return (
-    <>
-      <LeaderboardPage/>
-    </>
+    <Suspense fallback={<div className='text-red-600 text-4xl flex justify-center items-center h-screen'>Loading...</div>}>
+      <Routes> 
+        <Route path='/' element={<BlogSection />}>   
+        </Route>
+      </Routes>
+    </Suspense>
+ 
   )
 }
 
-export default App
+export default App;
+
+ 
