@@ -103,7 +103,7 @@ const resetTime = ()=>{
                     key={option}
                     onClick={() => handleoptionClick(option)}
                     className={`flex  w-full px-4 py-3 border font-semibold ${selectedOptions[currentIndex] === option
-                      ? "border-green-600 border-2 rounded"
+                      ? "border-blue-600 border-2 rounded"
                       : "rounded border-gray-300"
                       }`}
                   >
