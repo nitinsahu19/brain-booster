@@ -6,8 +6,8 @@ import Topsubjectcard from "../molecules/dashBoard/Topsubjectcard";
 import TopformersCard from "../molecules/dashBoard/TopformersCard";
 import PopularSubjects from "../molecules/dashBoard/PopularSubjects";
 import LatestfromBlog from "../molecules/dashBoard/LatestfromBlog";
-import MiniFooter from "../organism/Minifooter";
-import Footer from "../organism/Footer";
+import MiniFooter from "../organisms/Minifooter";
+import Footer from "../organisms/Footer";
 
 function Home() {
     return (

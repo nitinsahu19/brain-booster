@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export function Progress({ value, color = 'bg-blue-500' }) {

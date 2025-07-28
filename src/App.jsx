@@ -1,8 +1,5 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-// import Navbar from "./components/organism/Navbar";
-// import Signup from "./components/Signup";
-// import LoginForm from "./components/LoginForm";
 import Subjects from "./components/Subjects";
 import Blog from "./components/Blog";
 import Quizzes from "./components/Quizzes";

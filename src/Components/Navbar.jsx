@@ -53,7 +53,7 @@ const Navbar = () => {
             </NavLink>
 
             <NavLink
-              to="quizz"
+              to="quizees"
               className={({ isActive }) =>
                 `flex items-center gap-1 transition ${
                   isActive

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { resetQuiz } from '../../ReduxApi/Slice/QuizSlice';
+import { resetQuiz } from '../../redux/reducers/QuizSlice';
 import { useNavigate } from 'react-router-dom';
 import PrimaryBtn from '../atoms/Button/PrimaryBtn';
 

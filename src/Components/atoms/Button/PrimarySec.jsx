@@ -8,6 +8,6 @@
     >
       {label}
     </button>
-  );
+  );  
 }
 export default Button;

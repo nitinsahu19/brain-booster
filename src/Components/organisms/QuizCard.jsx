@@ -2,7 +2,7 @@ import PrimaryBtn from '../atoms/Button/PrimaryBtn'
 import { LuClock3 } from 'react-icons/lu'
 import { FaCoins } from 'react-icons/fa'
 import AnswerFiled from '../atoms/InputField/AnswerFiled'
-import { nextQuestion, prevQuestion, selectAnswer } from '../../ReduxApi/Slice/QuizSlice'
+import { nextQuestion, prevQuestion, selectAnswer } from '../../redux/reducers/QuizSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useTimer } from 'react-timer-hook'
 

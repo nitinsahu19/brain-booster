@@ -1,13 +1,36 @@
-import React from 'react'
+import ScoreCard from "./organisms/ScoreCard";
+import { useState } from "react";
+import QuizCard from "./organisms/QuizCard";
+import { useSelector } from "react-redux";
+import SubjectList from "./organisms/SubjectList"; 
 
-function Quizzes() {
+const Quizees = () => {
+
+    const { questions, currentIndex, selectedAnswers } = useSelector((state) => state.quiz);
+    const currentQuestion = questions[currentIndex];
+    const [showScoreCard, setShowScoreCard] = useState(false);
+
+    const handleSubmit = () => {
+        if (selectedAnswers[currentQuestion.id]) {
+            setShowScoreCard(true);
+        } else {
+            alert("Please select an answer before submitting.");
+        }
+    };
+
     return (
-        <div>
-            <h1 className='min-h-screen flex items-center justify-center px-4 text-2xl font-bold'>
-                Quizzes
-            </h1>
-        </div>
-    )
-}
+        <>
+            {showScoreCard ? (
+                <ScoreCard questions={questions} selectedAnswers={selectedAnswers} />
+            ) : (
+                <QuizCard handleSubmit={handleSubmit} />
+            )}
 
-export default Quizzes
+            <SubjectList />
+
+        </>
+    );
+};
+
+
+export default Quizees;
