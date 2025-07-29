@@ -1,4 +1,4 @@
-import ProgressLayout from "../Components/tamplate/ProgressLayout";
+import ProgressLayout from "../Components/templates/ProgressLayout";
 import {
   Flame,
   Star,
@@ -18,16 +18,46 @@ const dummyData = {
     { name: "Science", score: 92 },
     { name: "History", score: 65 },
     { name: "Language Arts", score: 88 },
-    
+
     { name: "Geography", score: 31 },
   ],
   achievements: [
-    { title: "Quiz Master", desc: "Complete 100 quizzes", date: "Dec 15, 2023", icon: <Trophy className="text-yellow-500" /> },
-    { title: "Perfect Score", desc: "Achieve 100% in 5 consecutive quizzes", date: "Dec 12, 2023", icon: <Star className="text-blue-500" /> },
-    { title: "Science Whiz", desc: "Master all science topics", date: "Dec 10, 2023", icon: <FlaskConical className="text-green-500" /> },
-    { title: "Math Champion", desc: "Complete advanced math section", date: "Dec 8, 2023", icon: <CheckCircle className="text-purple-500" /> },
-    { title: "Consistent Learner", desc: "10-day streak", date: "Dec 5, 2023", icon: <Flame className="text-orange-500" /> },
-    { title: "Speed Demon", desc: "Complete 5 quizzes under time limit", date: "Dec 1, 2023", icon: <Timer className="text-red-500" /> },
+    {
+      title: "Quiz Master",
+      desc: "Complete 100 quizzes",
+      date: "Dec 15, 2023",
+      icon: <Trophy className="text-yellow-500" />,
+    },
+    {
+      title: "Perfect Score",
+      desc: "Achieve 100% in 5 consecutive quizzes",
+      date: "Dec 12, 2023",
+      icon: <Star className="text-blue-500" />,
+    },
+    {
+      title: "Science Whiz",
+      desc: "Master all science topics",
+      date: "Dec 10, 2023",
+      icon: <FlaskConical className="text-green-500" />,
+    },
+    {
+      title: "Math Champion",
+      desc: "Complete advanced math section",
+      date: "Dec 8, 2023",
+      icon: <CheckCircle className="text-purple-500" />,
+    },
+    {
+      title: "Consistent Learner",
+      desc: "10-day streak",
+      date: "Dec 5, 2023",
+      icon: <Flame className="text-orange-500" />,
+    },
+    {
+      title: "Speed Demon",
+      desc: "Complete 5 quizzes under time limit",
+      date: "Dec 1, 2023",
+      icon: <Timer className="text-red-500" />,
+    },
   ],
 };
 

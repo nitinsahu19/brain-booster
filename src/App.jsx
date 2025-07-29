@@ -3,16 +3,17 @@ import { Route, Routes } from "react-router-dom";
 import Subjects from "./components/Subjects";
 import Blog from "./components/Blog";
 import Quizzes from "./components/Quizzes";
-import LeaderboardPage from "./components/tamplate/LeaderboardPage";
-import Register from "./components/tamplate/Register";
+import LeaderboardPage from "./Components/templates/LeaderboardPage";
+import Register from "./Components/templates/Register";
 import ProtectedRoute from "./protectect/ProtectedRoute ";
 import { BeatLoader } from "react-spinners";
-import Login from "./components/tamplate/Login";
+import Login from "./Components/templates/Login";
 import MyProgress from "./data/MyProgress";
+import BlogSection from "./components/templates/Blog";
 
 const Navbar = lazy(() => import("./Components/Navbar"));
 const NotFound = lazy(() => import("./Components/NotFound"));
-const Home = lazy(() => import("./components/tamplate/Home"));
+const Home = lazy(() => import("./Components/templates/Home"));
 
 function App() {
   return (
@@ -30,13 +31,14 @@ function App() {
           <Route path="/" element={<Navbar />}>
             <Route path="progress" element={<MyProgress />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="quizees" element={<Quizzes />} />
+            <Route path="blog" element={<BlogSection />} />
           </Route>
           {/* Open Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/quizees" element={<Quizzes/>}/>
 
           {/* Protected Routes */}
           <Route
@@ -44,14 +46,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <Subjects />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <ProtectedRoute>
-                <Blog />
               </ProtectedRoute>
             }
           />
