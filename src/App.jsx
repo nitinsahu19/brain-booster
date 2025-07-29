@@ -1,19 +1,16 @@
 import React, { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/organism/Navbar";
-// import Signup from "./components/Signup";
-// import LoginForm from "./components/LoginForm";
-import Subjects from "./components/Subjects";
-import Blog from "./components/Blog";
-import LeaderboardPage from "./components/tamplate/LeaderboardPage";
-import Register from "./components/tamplate/Register";
-import ProtectedRoute from "./protectect/ProtectedRoute ";
+
+import LeaderboardPage from "./components/template/LeaderboardPage";
+import Register from "./components/template/Register";
 import { BeatLoader } from "react-spinners";
-import Login from "./components/tamplate/Login";
-import NotFound from "./components/tamplate/NotFound";
-import Quizzes from "./components/tamplate/Page";
+import Login from "./components/template/Login";
+import NotFound from "./components/template/NotFound";
+import Quizzes from "./components/template/Page";
 import MyProgress from "./data/MyProgress.jsx";
-const Home = lazy(() => import("./components/tamplate/Home"));
+import ProtectedRoute from "./protected/ProtectedRoute .jsx";
+const Home = lazy(() => import("./components/template/Home"));
 
 function App() {
   return (
@@ -21,24 +18,12 @@ function App() {
       <Navbar />
       <Suspense fallback={<div className="flex justify-center items-center h-screen fw-bold"><h1><BeatLoader /></h1></div>}>
         <Routes>
-          {/* Open Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
 
 
-          {/* Protected Routes */}
-          <Route path="" element={
-            <ProtectedRoute>
-              <Subjects />
-            </ProtectedRoute>
-          } />
-          <Route path="" element={
-            <ProtectedRoute>
-              <Blog />
-            </ProtectedRoute>
-          } />
           <Route path="quizze" element={
             <ProtectedRoute>
               <Quizzes />

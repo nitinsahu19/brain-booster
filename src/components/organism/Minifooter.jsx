@@ -1,5 +1,5 @@
 
-import {stats} from '../DashBorddata';
+import {stats} from '../../data/dashboarddata';
 
 const MiniFooter = () => {
     return (

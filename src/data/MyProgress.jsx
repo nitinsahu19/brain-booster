@@ -1,4 +1,4 @@
-import ProgressLayout from "../components/tamplate/ProgressLayout";
+import ProgressLayout from "../components/template/ProgressLayout";
 
 const dummyData = {
     totalQuizzes: 247,

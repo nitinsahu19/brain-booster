@@ -1,5 +1,5 @@
 import React from "react";
-import { DeshbordCard, subjects, TopPerformers, BlogPosts, FeaturedBlog, SubjectsData, BlogData } from "../DashbordData";
+import { DeshbordCard, subjects, TopPerformers, BlogPosts, FeaturedBlog, SubjectsData, BlogData } from "../../data/dashboarddata";
 import { BookText } from "lucide-react";
 import Card from "../molecules/dashBoard/Card";
 import Topsubjectcard from "../molecules/dashBoard/Topsubjectcard";
