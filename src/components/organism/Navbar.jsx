@@ -1,104 +1,164 @@
-import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import { FaCoins } from "react-icons/fa6";
-import { FaGraduationCap } from "react-icons/fa";
+// import React, { useState, useEffect } from "react";
+// import { NavLink, Outlet, useNavigate } from "react-router-dom";
+// import { GraduationCap } from "lucide-react";
+// import { IoBookOutline } from "react-icons/io5";
+// import { PiGraduationCap } from "react-icons/pi";
+// import { FaTrophy } from "react-icons/fa";
+// import { FaBlog } from "react-icons/fa";
+// import { VscGraph } from "react-icons/vsc";
+// import { FiMenu, FiX } from "react-icons/fi";
+// import { useDispatch, useSelector } from "react-redux";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
-  const user = JSON.parse(localStorage.getItem("currentUser"));
+// const Navbar = () => {
+//   const dispatch= useDispatch();
+//   const [isOpen, setIsOpen] = useState(false);
+//   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    navigate("/login");
-  };
+//     const user = useSelector((state) => state.user);
 
-  return (
-    <nav className="flex justify-between items-center px-8 py-4 shadow-md bg-white relative">
-      <div className="flex items-center gap-2">
-        <span className="text-blue-600 text-2xl"><FaGraduationCap /></span>
-        <h1 className="font-bold text-lg">Brain Booster</h1>
-      </div>
+//   const handleLogout = () => {
+//     // localStorage.removeItem("user");
+//     dispatch(logout());
+//     // setIsAuthenticated(false);
+//     navigate("/");
+//   };
 
-      <div className="hidden md:flex items-center gap-6 flex-wrap">
-        {["/", "/subjects", "/leaderboard", "/blog", "/quizze", "/progress"].map((path, index) => (
-          <NavLink
-            key={index}
-            to={path}
-            className={({ isActive }) =>
-              isActive ? "text-blue-500 font-bold border-b-2  hover1 " : "text-gray-700 font-semibold hover"
-            }
-          >
-            {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-          </NavLink>
-        ))}
-      </div>
+//   return (
+//     <>
+//       <nav className="bg-white shadow-md px-6 py-3">
+//         <div className="max-w-7xl mx-auto flex justify-between items-center">
+//           <div className="flex items-center space-x-2">
+//             <GraduationCap className="text-blue-600 w-6 h-6" />
+//             <span className="text-xl font-bold text-gray-900">Brain Booster</span>
+//           </div>
 
-      <div className="hidden md:flex gap-4 items-center font-semibold">
-        {user ? (
-          <>
-            <div className="flex items-center gap-2">
-              <p className="text-amber-400 pt-1"><FaCoins /></p>
-              <p>{user.coins || 100}</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <img className="h-8 w-8 rounded-full" src={user.image || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"} alt="user" />
-              <p>{user.name || "User"}</p>
-            </div>
-            <button onClick={handleLogout} className="text-white bg-blue-500 p-1 rounded-2 font-semibold hover:text-red-600">Logout</button>
-          </>
-        ) : (
-          <>
-            <NavLink to="/login" className="text-gray-700 font-semibold hover:text-blue-600">Login</NavLink>
-            {/* <NavLink to="/signup" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Register</NavLink> */}
-          </>
-        )}
-      </div>
+//           <div className="md:hidden">
+//             <button onClick={() => setIsOpen(!isOpen)} aria-label="Toggle Menu">
+//               {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+//             </button>
+//           </div>
 
-      <div className="md:hidden flex items-center">
-        <button onClick={() => setIsOpen(!isOpen)} className="text-2xl">
-          {isOpen ? "X" : "☰"}
-        </button>
-      </div>
+//           <div className="hidden md:flex space-x-6">
+//             <NavLink
+//               to="/"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <IoBookOutline /> Home
+//             </NavLink>
 
-      {isOpen && (
-        <div className="absolute top-full left-0 w-full bg-white shadow-md flex flex-col gap-4 p-4 md:hidden z-50">
-          {["/", "/subjects", "/leaderboard", "/quizze", "/blog", "/progress"].map((path, index) => (
-            <NavLink
-              key={index}
-              to={path}
-              className={({ isActive }) =>
-                isActive ? "text-blue-600 font-bold border-b-2" : "text-gray-700 font-semibold hover:text-blue-600"
-              }
-              onClick={() => setIsOpen(false)}
-            >
-              {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-            </NavLink>
-          ))}
+//             <NavLink
+//               to="/quizze"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <IoBookOutline /> Quizzes
+//             </NavLink>
 
-          {user ? (
-            <>
-              <div className="flex items-center gap-2 mt-2">
-                <p className="text-amber-400 pt-1"><FaCoins /></p>
-                <p>{user.coins || 100}</p>
-              </div>
-              <div className="flex items-center gap-2 mt-2">
-                <img className="h-9 w-9 rounded-full" src={user.image || "https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg"} alt="user" />
-                <p >{user.name || "User"}</p>
-              </div>
-              <button onClick={() => {setIsOpen(false); handleLogout();}} className="text-red-500 mt-2 font-semibold text-left"> Logout </button>
-            </>
-          ) : (
-            <>
-              <NavLink to="/login" onClick={() => setIsOpen(false)} className="text-gray-700 font-semibold hover:text-blue-600">Login</NavLink>
-              {/* <NavLink to="/signup" onClick={() => setIsOpen(false)} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 w-fit">Register</NavLink> */}
-            </>
-          )}
-        </div>
-      )}
-    </nav>
-  );
-};
+//             <NavLink
+//               to="/subjects"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <PiGraduationCap /> Subject
+//             </NavLink>
 
-export default Navbar;
+//             <NavLink
+//               to="/leaderboard"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <FaTrophy /> Leaderboard
+//             </NavLink>
+
+//             <NavLink
+//               to="/blog"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <FaBlog /> Blog
+//             </NavLink>
+
+//             <NavLink
+//               to="/progress"
+//               className={({ isActive }) =>
+//                 `flex items-center gap-1 transition ${isActive ? "text-blue-600 font-semibold" : "hover"}`
+//               }
+//             >
+//               <VscGraph /> MyProgress
+//             </NavLink>
+//           </div>
+
+//           <div className="hidden md:flex items-center space-x-4">
+//             {!user.currentUser ? (
+//               <NavLink
+//                 to="/login"
+//                 className="text-gray-700 font-semibold hover:text-blue-600 transition border px-4 py-2 rounded"
+//               >
+//                 Login
+//               </NavLink>
+//             ) : (
+//               <button
+//                 onClick={handleLogout}
+//                 className="text-gray-700 font-semibold hover:text-blue-600 transition border px-4 py-2 rounded"
+//               >
+//                 Logout
+//               </button>
+//             )}
+//           </div>
+//         </div>
+
+//         {isOpen && (
+//           <div className="md:hidden flex flex-col space-y-2 mt-4">
+//             <NavLink to="/" className="flex items-center gap-2 px-4 py-2 hover">
+//               <IoBookOutline /> Home
+//             </NavLink>
+//             <NavLink to="/quizze" className="flex items-center gap-2 px-4 py-2 hover">
+//               <IoBookOutline /> Quizzes
+//             </NavLink>
+//             <NavLink to="/subjects" className="flex items-center gap-2 px-4 py-2 hover">
+//               <PiGraduationCap /> Subject
+//             </NavLink>
+//             <NavLink to="/leaderboard" className="flex items-center gap-2 px-4 py-2 hover">
+//               <FaTrophy /> Leaderboard
+//             </NavLink>
+//             <NavLink to="/blog" className="flex items-center gap-2 px-4 py-2 hover">
+//               <FaBlog /> Blog
+//             </NavLink>
+//             <NavLink to="/progress" className="flex items-center gap-2 px-4 py-2 hover">
+//               <VscGraph /> MyProgress
+//             </NavLink>
+
+//             <div className="flex flex-col space-y-2 mt-2 px-4">
+//               {!user.currentUser ? (
+//                 <NavLink
+//                   to="/login"
+//                   className="text-gray-700 font-semibold hover:text-blue-600 border px-4 py-2 rounded transition"
+//                 >
+//                   Login
+//                 </NavLink>
+//               ) : (
+//                 <button
+//                   onClick={handleLogout}
+//                   className="text-gray-700 font-semibold hover:text-blue-600 border px-4 py-2 rounded transition"
+//                 >
+//                   Logout
+//                 </button>
+//               )}
+//             </div>
+//           </div>
+//         )}
+//       </nav>
+
+//       <Outlet />
+//     </>
+//   );
+// };
+
+// export default Navbar;

@@ -8,14 +8,17 @@ import PopularSubjects from "../molecules/dashBoard/PopularSubjects";
 import LatestfromBlog from "../molecules/dashBoard/LatestfromBlog";
 import MiniFooter from "../organism/Minifooter";
 import Footer from "../organism/Footer";
+import { useSelector } from "react-redux";
 
 function Home() {
+    const user = useSelector((state) => state.user);
+
     return (
 
         <>
             <div className="p-6">
                 <div className="mb-6">
-                    <h2 className="text-2xl font-bold">Welcome back, Mukesh</h2>
+                    <h2 className="text-2xl font-bold">Welcome back, {user.currentUser.name}</h2>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
@@ -35,9 +38,11 @@ function Home() {
                     <div className="w-100 mx-auto bg-white rounded-xl shadow-sx border p-4">
                         <h2 className="text-lg font-bold mb-4">This Week's Top Performers</h2>
                         <ul className="space-y-3">
-                            {TopPerformers.map((user) => (
-                                <TopformersCard key={user.id} user={user} />
-                            ))}
+                            {[...TopPerformers]
+                                .sort((a, b) => b.points - a.points)
+                                .map((user) => (
+                                    <TopformersCard key={user.id} user={user} />
+                                ))}
                         </ul>
                     </div>
                     <div className="w-100 mx-auto bg-white rounded-xl shadow-xs border p-4 s">
@@ -99,5 +104,4 @@ function Home() {
         </>
     );
 }
-
 export default Home;

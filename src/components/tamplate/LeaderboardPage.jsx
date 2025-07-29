@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaTrophy } from "react-icons/fa";
 import leaderboardData from "../../data/leaderboardData";
-import  Button  from "../atoms/Button";
+import  Button  from "../atoms/button/Button";
 import LeaderboardTable from "../organism/LeaderboardTable";
 import UserCard from "../molecules/dashBoard/UserCard";
 

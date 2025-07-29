@@ -5,13 +5,14 @@ import Navbar from "./components/organism/Navbar";
 // import LoginForm from "./components/LoginForm";
 import Subjects from "./components/Subjects";
 import Blog from "./components/Blog";
-import Quizzes from "./components/Quizzes";
 import LeaderboardPage from "./components/tamplate/LeaderboardPage";
 import Register from "./components/tamplate/Register";
-import ProtectedRoute from "./protectect/ProtectedRoute "; 
+import ProtectedRoute from "./protectect/ProtectedRoute ";
 import { BeatLoader } from "react-spinners";
 import Login from "./components/tamplate/Login";
-
+import NotFound from "./components/tamplate/NotFound";
+import Quizzes from "./components/tamplate/Page";
+import MyProgress from "./data/MyProgress.jsx";
 const Home = lazy(() => import("./components/tamplate/Home"));
 
 function App() {
@@ -25,19 +26,21 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+
 
           {/* Protected Routes */}
-          <Route path="/subjects" element={
+          <Route path="" element={
             <ProtectedRoute>
               <Subjects />
             </ProtectedRoute>
           } />
-          <Route path="/blog" element={
+          <Route path="" element={
             <ProtectedRoute>
               <Blog />
             </ProtectedRoute>
           } />
-          <Route path="/quizze" element={
+          <Route path="quizze" element={
             <ProtectedRoute>
               <Quizzes />
             </ProtectedRoute>
@@ -45,6 +48,11 @@ function App() {
           <Route path="/leaderboard" element={
             <ProtectedRoute>
               <LeaderboardPage />
+            </ProtectedRoute>
+          } />
+          <Route path="/Progress" element={
+            <ProtectedRoute>
+              <MyProgress />
             </ProtectedRoute>
           } />
         </Routes>
