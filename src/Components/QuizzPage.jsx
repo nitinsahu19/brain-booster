@@ -48,32 +48,40 @@ const questions = [
 
 function QuizzPage() {
     const [state, dispatch] = useReducer(QuizReducer, initialState);
-    const [count, setCount] = useState(60);
+    const [second, setSecond] = useState(60);
+    const [minut, setMinut] = useState(2);
     const [answers, setAnswers] = useState({});
 
     useEffect(() => {
-        if (count === 0) {
-            return;
-        }
+        if (minut === 0 && second === 0) return;
 
         const timer = setInterval(() => {
-            setCount(prev => prev - 1);
+            setSecond(prev => {
+                if (prev === 0) {
+                    setMinut(m => m - 1);
+                    return 59;
+                } else {
+                    return prev - 1;
+                }
+            });
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [count]);
+    }, [minut, second]);
 
     const handelnext = () => {
         if (state.page < questions.length) {
             dispatch({ type: "nextfield" });
-            setCount(60);
+            setSecond(60);
+            setMinut(2);
         }
     };
 
     const handelpre = () => {
         if (state.page > 1) {
             dispatch({ type: "prefield" });
-            setCount(60);
+            setSecond(60);
+            setMinut(2);
         }
     };
 
@@ -87,54 +95,58 @@ function QuizzPage() {
     };
 
     return (
-        <div className='flex font-sans justify-center items-center h-screen'>
-            <div className='rounded-3xl shadow-2xl p-4 w-full max-w-xl bg-white'>
-                <div className='flex justify-between'>
-                    <div>
-                        <h1 className='text-2xl font-bold'>Physics</h1>
-                        <p className='text-gray-600 text-sm'>Calculus Basics Quiz</p>
-                    </div>
-                    <div className='text-sm flex gap-2 items-center'>
-                        <p><MdOutlineWatchLater/></p>
-                        <p>{count}</p>
-                        <p className='text-yellow-500'><FaCoins /></p>
-                        <p>100</p>
-                    </div>
-                </div>
-
-                <div className='text-sm pt-2 flex gap-2'>
-                    <p className='text-sm font-semibold'>Question {state.page} of {questions.length}</p>
-                </div>
-
-                {count > 0 ? (
-                    <>
-                        <h2 className="font-semibold text-sm mt-4 mb-3">
-                            {currentQuestion.question}
-                        </h2>
-
-                        <div className="space-y-2">
-                            {currentQuestion.options.map((option, index) => (
-                                <button key={index} onClick={() => handleOptionClick(index)} className={`w-full cursor-pointer text-left px-4 py-2 border rounded  ${answers[state.page - 1] === index ? 'border-blue-900 bg-emerald-500' : ''}`}>  {option}  </button>
-                            ))}
+        <div className='flex font-sans justify-center items-center h-screen bg-gray-100'>
+            {(minut > 0 || second > 0) ? (
+                <div className='rounded-3xl shadow-2xl p-4 w-full max-w-xl bg-white'>
+                    <div className='flex justify-between'>
+                        <div>
+                            <h1 className='text-2xl font-bold'>Physics</h1>
+                            <p className='text-gray-600 text-sm'>Calculus Basics Quiz</p>
                         </div>
-                    </>
-                ) : (
-                    <div className="text-center text-red-500 text-lg font-semibold mt-6">
-                        ❌ 😋 Your time is over </div>
-                )} 
+                        <div className='text-sm flex gap-2 items-center'>
+                            <MdOutlineWatchLater />
+                            <p>{String(minut).padStart(2, '0')}:{String(second).padStart(2, '0')}</p>
+                            <FaCoins className='text-yellow-500' />
+                            <p>100</p>
+                        </div>
+                    </div>
 
-                <div className='flex justify-between mt-6'>
-                    {state.page !== 1 && (
-                        <button className='border cursor-pointer rounded px-4 py-2' onClick={handelpre}>Previous</button>
-                    )}
-                    {state.page !== 10 && (
-                        <button className='border cursor-pointer text-white bg-blue-600 rounded px-4 py-2' onClick={handelnext}>Next</button>
-                    )}
-                    {state.page === 10 && (
-                        <button className='border cursor-pointer text-white bg-gray-600 rounded px-4 py-2'>  Submit  </button>
-                    )}
+                    <div className='text-sm pt-2 flex gap-2'>
+                        <p className='text-sm font-semibold'>Question {state.page} of {questions.length}</p>
+                    </div>
+
+                    <h2 className="font-semibold text-sm mt-4 mb-3">
+                        {currentQuestion.question}
+                    </h2>
+
+                    <div className="space-y-2">
+                        {currentQuestion.options.map((option, index) => (
+                            <button
+                                key={index}
+                                onClick={() => handleOptionClick(index)}
+                                className={`w-full cursor-pointer text-left px-4 py-2 border rounded ${answers[state.page - 1] === index ? 'border-blue-900 bg-blue-600 text-white' : ''}`} >
+                                {option}
+                            </button>
+                        ))}
+                    </div>
+
+                    <div className='flex justify-between mt-6'>
+                        {state.page !== 1 && (
+                            <button className='border cursor-pointer rounded px-4 py-2' onClick={handelpre}>Previous</button>
+                        )}
+                        {state.page !== 10 && (
+                            <button className='border cursor-pointer text-white bg-blue-600 rounded px-4 py-2' onClick={handelnext}>Next</button>
+                        )}
+                        {state.page === 10 && (
+                            <button className='border cursor-pointer text-white bg-gray-600 rounded px-4 py-2'>Submit</button>
+                        )}
+                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="text-center text-red-500 text-2xl font-bold bg-white rounded-3xl p-8 shadow-2xl">
+                    ❌ 😋 Your time is over
+                </div>
+            )}
         </div>
     );
 }
