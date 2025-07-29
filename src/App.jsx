@@ -24,7 +24,6 @@ function App() {
           {/* Open Routes */}
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
 
