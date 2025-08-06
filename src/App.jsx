@@ -1,25 +1,20 @@
 
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-// import Navbar from "./components/organism/Navbar";
-// import Signup from "./components/Signup";
-// import LoginForm from "./components/LoginForm";
-import Subjects from "./components/Subjects";
-import Blog from "./components/Blog";
-import Quizzes from "./components/Quizzes";
-import LeaderboardPage from "./components/tamplate/LeaderboardPage";
-import Register from "./components/tamplate/Register";
+
+import Subjects from "./components/templates/Subjects";
+import Blog from "./components/templates/Blog"
 import ProtectedRoute from "./protectect/ProtectedRoute ";
 import { BeatLoader } from "react-spinners";
-import Login from "./components/tamplate/Login";
+import Login from "./components/templates/Login"
 import MyProgress from "./data/MyProgress";
-import Layout from './component/template/Layout'
-import Quizze from './component/pages/Quizze'
-import DefaultPage from './component/pages/DefaultPage'
+import Register from "./components/templates/Register";
+import Quizzes from "./components/templates/Quizzes";
+import LeaderBoardPage from "./components/templates/LeaderBoardPage";
 
-const Navbar = lazy(() => import("./Components/Navbar"));
-const NotFound = lazy(() => import("./Components/NotFound"));
-const Home = lazy(() => import("./components/tamplate/Home"));
+const Navbar = lazy(() => import("./components/organisms/Navbar"));
+const NotFound = lazy(() => import("./components/templates/NotFound"));
+const Home = lazy(() => import("./components/templates/Home"));
 
 function App() {
   return (
@@ -35,50 +30,41 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Navbar />}>
-            <Route path="progress" element={<MyProgress />} />
-            <Route path="*" element={<NotFound />} />
-             {/* <Route path='*' element={<DefaultPage/>}/> */}
-          </Route>
-          {/* Open Routes */}
-          <Route path='/quizze' element={<Quizze/>}/>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Register />} />
-          <Route path="/register" element={<Register />} />
+            <Route path="/progress" element={<MyProgress />} />
+            <Route path='/quizze' element={<Quizzes />} />
+            <Route path="/" element={<Home />} />
+            {/* Protected Routes */}
+            <Route
+              path="/subjects"
+              element={
+                <ProtectedRoute>
+                  <Subjects />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/blog"
+              element={
+                <ProtectedRoute>
+                  <Blog />
+                </ProtectedRoute>
+              }
+            />
 
-          {/* Protected Routes */}
-          <Route
-            path="/subjects"
-            element={
-              <ProtectedRoute>
-                <Subjects />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/blog"
-            element={
-              <ProtectedRoute>
-                <Blog />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/quizze"
-            element={
-              <ProtectedRoute>
-                <Quizzes />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/leaderboard"
-            element={
-              <ProtectedRoute>
-                <LeaderboardPage />
-              </ProtectedRoute>
-            }
-          />
+            <Route
+              path="/leaderboard"
+              element={
+                <ProtectedRoute>
+                  <LeaderBoardPage />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+
+          {/* Open Routes */}
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

@@ -1,6 +1,6 @@
 
 import { useDispatch, useSelector } from "react-redux"
-import { nextQuestion, preQuestion, resetquize, checkAnswer,resetIsFinished } from "../../slice/quizeSlice";
+import { nextQuestion, preQuestion, resetquize, checkAnswer,resetIsFinished } from "../../redux/reducers/quizeSlice";
 import { useTimer } from "react-timer-hook";
 import { MdOutlineWatchLater } from "react-icons/md";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import { useState } from "react";
 
 
 
-const Quizze = () => {
+const Quizzes = () => {
 
   const dispatch = useDispatch();
   const { question, score, currentIndex, selectedOptions, isFinished } = useSelector((state) => state.quize)
@@ -149,4 +149,4 @@ const resetTime = ()=>{
   )
 }
 
-export default Quizze
+export default Quizzes

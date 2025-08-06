@@ -1,4 +1,4 @@
-import ProgressLayout from "../Components/template/ProgressLayout";
+import ProgressLayout from "../components/templates/ProgressLayout";
 import {
   Flame,
   Star,

@@ -5,7 +5,7 @@ function Card({item, index }) {
         <>
             <div
                 key={index}
-                className="bg-white p-4 rounded-xl flex items-center gap-4 shadow-md border"
+                className="bg-white p-4 rounded-xl flex items-center gap-4 shadow-xl"
             >
                 <img src={item.Image} alt={item.Title} className="w-10 h-10" />
                 <div>

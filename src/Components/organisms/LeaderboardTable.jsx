@@ -5,7 +5,7 @@ export default function LeaderboardTable({ users }) {
   return (
     <table className="w-full mt-6 text-left">
       <thead>
-        <tr className="bg-gray-100">
+        <tr className="bg-gray-100 ">
           <th className="py-2 px-4">Rank</th>
           <th className="py-2 px-4">User</th>
           <th className="py-2 px-4">Score</th>

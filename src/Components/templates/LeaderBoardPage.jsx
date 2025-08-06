@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { FaTrophy } from "react-icons/fa";
 import leaderboardData from "../../data/leaderboardData";
 import  Button  from "../atoms/Button";
-import LeaderboardTable from "../organism/LeaderboardTable";
+import LeaderboardTable from "../organisms/LeaderboardTable"
 import UserCard from "../molecules/dashBoard/UserCard";
 
-const LeaderboardPage = () => {
+const LeaderBoardPage = () => {
   const [activeTab, setActiveTab] = useState("Weekly");
 
   const top3 = leaderboardData.slice(0, 3);
@@ -29,16 +29,18 @@ const LeaderboardPage = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
           {top3.map((user, i) => (
             <UserCard key={i} {...user} />
           ))}
         </div>
+<div className="sm:overflow-x-scroll">
+          <LeaderboardTable users={lowerUsers} />
 
-        <LeaderboardTable users={lowerUsers} />
+</div>
       </div>
     </div>
   );
 };
 
-export default LeaderboardPage;
+export default LeaderBoardPage;

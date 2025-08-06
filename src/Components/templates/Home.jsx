@@ -1,13 +1,13 @@
 import React from "react";
-import { DeshbordCard, subjects, TopPerformers, BlogPosts, FeaturedBlog, SubjectsData, BlogData } from "../DashbordData";
+import { DeshbordCard, subjects, TopPerformers, BlogPosts, FeaturedBlog, SubjectsData, BlogData } from "../../data/DashBorddata";
 import { BookText } from "lucide-react";
 import Card from "../molecules/dashBoard/Card";
 import Topsubjectcard from "../molecules/dashBoard/Topsubjectcard";
 import TopformersCard from "../molecules/dashBoard/TopformersCard";
 import PopularSubjects from "../molecules/dashBoard/PopularSubjects";
 import LatestfromBlog from "../molecules/dashBoard/LatestfromBlog";
-import MiniFooter from "../organism/Minifooter";
-import Footer from "../organism/Footer";
+import MiniFooter from "../organisms/Minifooter";
+import Footer from "../organisms/Footer";
 
 function Home() {
     return (
@@ -15,7 +15,7 @@ function Home() {
         <>
             <div className="p-6">
                 <div className="mb-6">
-                    <h2 className="text-2xl font-bold">Welcome back, Mukesh</h2>
+                    <h2 className="text-2xl font-bold">Welcome back, Suresh joshi</h2>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-10">
@@ -24,15 +24,15 @@ function Home() {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
-                    <div className="w-100 mx-auto bg-white p-6 rounded-xl shadow-xs border">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className=" w-auto  bg-white p-6 rounded-xl shadow-xl ">
                         <h3 className="text-xl font-semibold mb-4">Top Subjects</h3>
 
                         {subjects.map((subject, index) => (
                             <Topsubjectcard key={index} subject={subject} index={index} />
                         ))}
                     </div>
-                    <div className="w-100 mx-auto bg-white rounded-xl shadow-sx border p-4">
+                    <div className=" w-auto  bg-white rounded-xl shadow-xl p-4">
                         <h2 className="text-lg font-bold mb-4">This Week's Top Performers</h2>
                         <ul className="space-y-3">
                             {TopPerformers.map((user) => (
@@ -40,7 +40,7 @@ function Home() {
                             ))}
                         </ul>
                     </div>
-                    <div className="w-100 mx-auto bg-white rounded-xl shadow-xs border p-4 s">
+                    <div className=" w-auto  bg-white rounded-xl shadow-xl p-4 s">
                         <h2 className="text-lg font-bold">Latest Blog Posts</h2>
 
                         <img
@@ -71,7 +71,7 @@ function Home() {
                         </ul>
                     </div>
                 </div>
-                <div className="p-4 mt-4 border rounded-1" >
+                <div className="p-4 mt-4  rounded-1" >
                     <div>
                         <h2 className="text-lg font-bold">Popular Subjects</h2>
                     </div>
@@ -81,7 +81,7 @@ function Home() {
                         ))}
                     </div>
                 </div>
-                <div className="p-4 mt-4 border rounded-1">
+                <div className="p-4 mt-4  rounded-1">
                     <h2 className="text-xl font-bold mb-4">Latest from Blog</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {BlogData.map((item) => (

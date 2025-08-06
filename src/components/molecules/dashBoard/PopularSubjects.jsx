@@ -5,7 +5,7 @@ function PopularSubjects({ item, index }) {
         <>
             <div
                 key={index}
-                className="bg-white p-4 rounded-xl shadow-md border flex flex-col gap-3">
+                className="bg-white p-4 rounded-xl shadow-xl  flex flex-col gap-3">
                 <img src={item.icon} alt={item.name} className="w-10 h-10" />
                 <h4 className="text-lg font-semibold text-gray-800">{item.name}</h4>
                 <p className="text-sm text-gray-500">{item.quizzes} Quizzes</p>
@@ -15,7 +15,7 @@ function PopularSubjects({ item, index }) {
                         style={{ width: `${item.progress}%` }}
                     ></div>
                 </div>
-                <button className="mt-2 border border-blue-500 text-blue-500 px-4 py-1 rounded-3 hover:bg-blue-50 text-sm">
+                <button className="mt-2 border border-blue-500 text-blue-500 px-4 py-1 rounded-sm hover:bg-blue-500 hover:text-white font-semibold text-sm">
                     Start Quiz
                 </button>
             </div>
